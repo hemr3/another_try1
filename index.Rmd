@@ -1,0 +1,213 @@
+---
+output_dir: "."
+title: "First notebook"
+author: "Helen Ridout"
+date: "11 December 2020"
+bibliography: references.bib
+link-citation: yes
+output:
+    html_document:
+        toc: true
+        toc_depth: 4
+        toc_float: true
+
+---
+
+# This is a Heading {#link_of_header}
+<!-- This is a comment --> 
+<!-- add a hash to the headings line to make it smaller, remove one to make it bigger. Remember spaces! --> 
+
+## Inline text formating
+
+to make text bold use **double asterisks** or __double underscore__
+
+to make text italic use *asterisks* or _underscore_
+
+to make text superscript use ^pointyuparrows^
+
+to make text subscript use ~tilde~
+
+to mark text as inlike code use `backticks`
+
+to use strikethrough use ~~double tilde~~
+
+## Line breaks
+
+To separate lines
+
+\
+
+use back slashes
+
+
+
+# Links + lists
+Linking to website put the link in [square brackets, followed by the link in ()](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+[Link to shared document] (https://docs.google.com/document/d/1N8gPLlwWvviLO4S4v5DgsZrafEeV2r4IeHu3KHDrWNc/edit#)
+
+
+
+[Link to first heading](#link_of_header) - for this to work, the link_to_header must be in {} next to the header with one #.  
+
+\
+
+## Footnotes
+
+To indicate a footnote use [^1] and a second footnote [^2]
+
+[^1]: this is the first footnote
+[^2]: this is the second
+
+\
+
+## Lists
+
+Ordered lists (for sublists use 4 spaces to indent item)
+
+1. Golden Oriole
+2. Cat
+3. Black Blood
+    a. Enhanced Black Blood
+4. White Honey
+
+Unordered lists (*, +, -):
+
+- School of the Bear
+- School of the Wolf
+    - School of the Cat
+- School of the Viper
+
+Task list
+
+Task lists can be done in the following syntax:
+
+ - [ ] an unchecked task list item
+ 
+ - [x] a checked task list item 
+
+\
+
+# Inserting figures
+put figures you want in an img folder of the project you're working on.
+
+![Image caption - Xunantunich](img/Xunan.png)
+
+Next challenge can be found following this link: [Challenge 2](#challenge_two)
+\
+# Tables
+Use | and - to create a table as follows:
+
+| Column 1     | Column 2     |
+| ------------ | ------------ | 
+| Obi-Wan      | Master       | 
+| Anakin       | Padawan      |
+
+| Left align  | Center align | Right align  |
+| :---        |    :----:    |         ---: |
+| Item 1,1    | Item 1,2     | Item 1,3     | 
+| Item 2,1    | Item 2,2     | Item 2,3     |
+
+For tables with more than two columns, include these : in the way seen above. For big tables, these are not really particularly efficient or useful. 
+
+# Blocks
+
+## Text Blocks
+
+> For blocks, use a right-pointing angle bracket
+>
+> to make it more than one line, always start with the bracket
+
+## Code blocks
+Use three backticks (```) for enclosing things in a code block
+
+```
+print("Hello World!")
+x = c(1,2,3)
+print(x)
+```
+\
+
+# Creating a table of contents
+Go to the top of the document, as it applies to all the page. Use this code at the top of the page:
+```
+output:
+    html_document:
+        toc: true
+```
+
+Can change the depth of the heading with 
+```
+toc_depth: 4
+```
+This code above displays the table of contents at the top of the page, to get it as a sidebar that moves as you scroll:
+```
+toc_float: true
+```
+So the total code is:
+```
+output:
+    html_document:
+        toc: true
+        toc_depth: 4
+        toc_float: true
+```
+Be precise with the spacing in this. ALSO be aware with the floating sidebar of a contents table, it is very sensitive to the hashes on the headings, so make sure that all the headings you want are visible. 
+\
+
+# References examples
+Put references into a text file in the same sort of format as visible in the one on here. Upload the references to the R session. 
+\
+Go into the yaml section and add under the date: 
+```
+bibliography: references.bib
+link-citation: yes
+```
+Citation to a paper @cardona2019 and @cardona2014
+\
+Then put the references at the bottom of the doc with the # key. 
+
+\
+\
+
+
+# Challenges 1 + 2
+
+## 1,500 scientists lift the lid on reproducibility
+
+##### Monya Baker
+
+##### 25 May 2016
+
+## Survey sheds light on 'crisis' rocking research
+
+**More than 70% of researchers have tried and failed to reproduce other scientist's experiments**, and more than half have failed to reproduce their own experiments. Those are some of the telling figures that emerged from *Nature*'s survey of 1,576 researchers who took a brief online questionnaire on reproducibility in research.
+
+The data reveal sometimes-contradictory attitudes towards reproducibility. Although 52% of those surveyed agree that there is a significant 'crisis' of reproducibility, less than 31% think that failure to reproduce published results means that the result is probably wrong, and most say that they still trust the published literature.
+
+(to do this in a new website, put the first three headings under 'challenge' in the title, author and date sections respectively at the top of the page.)
+\
+
+#### Challenge 2 {#challenge_two}
+
+![ ](img/repro.png)
+
+### The Survey
+
+In the survey [^3] respondents were asked to rate 11 different approaches to improving reproducibilty in science. Below is the list order by the most highly rated:
+
+- Better understanding of statistics
+- Better mentoring/supervision
+- More robust design
+- Better teaching
+- More within-lab validation
+- Incentives for better practice
+- Incentives for formal reproduction
+- More external-lab validation
+- More time for mentoring
+- Journals enforcing standards
+- More time checking notebooks
+
+[^3]: The survey can be downloaded [here](https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970)
+
+# References

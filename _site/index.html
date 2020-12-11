@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Helen Ridout" />
+
+<meta name="date" content="2020-12-11" />
+
+<title>First notebook</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">First notebook</h1>
+<h4 class="author">Helen Ridout</h4>
+<h4 class="date">11 December 2020</h4>
+
+</div>
+
+
+<div id="link_of_header" class="section level1">
+<h1>This is a Heading</h1>
+<!-- This is a comment -->
+<!-- add a hash to the headings line to make it smaller, remove one to make it bigger. Remember spaces! -->
+<div id="inline-text-formating" class="section level2">
+<h2>Inline text formating</h2>
+<p>to make text bold use <strong>double asterisks</strong> or <strong>double underscore</strong></p>
+<p>to make text italic use <em>asterisks</em> or <em>underscore</em></p>
+<p>to make text superscript use <sup>pointyuparrows</sup></p>
+<p>to make text subscript use <sub>tilde</sub></p>
+<p>to mark text as inlike code use <code>backticks</code></p>
+<p>to use strikethrough use <del>double tilde</del></p>
+</div>
+<div id="line-breaks" class="section level2">
+<h2>Line breaks</h2>
+<p>To separate lines</p>
+<p><br />
+</p>
+<p>use back slashes</p>
+</div>
+</div>
+<div id="links-lists" class="section level1">
+<h1>Links + lists</h1>
+<p>Linking to website put the link in <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">square brackets, followed by the link in ()</a></p>
+<p>[Link to shared document] (<a href="https://docs.google.com/document/d/1N8gPLlwWvviLO4S4v5DgsZrafEeV2r4IeHu3KHDrWNc/edit#" class="uri">https://docs.google.com/document/d/1N8gPLlwWvviLO4S4v5DgsZrafEeV2r4IeHu3KHDrWNc/edit#</a>)</p>
+<p><a href="#link_of_header">Link to first heading</a> - for this to work, the link_to_header must be in {} next to the header with one #.</p>
+<p><br />
+</p>
+<div id="footnotes" class="section level2">
+<h2>Footnotes</h2>
+<p>To indicate a footnote use<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and a second footnote<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p><br />
+</p>
+</div>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
+<p>Ordered lists (for sublists use 4 spaces to indent item)</p>
+<ol style="list-style-type: decimal">
+<li>Golden Oriole</li>
+<li>Cat</li>
+<li>Black Blood
+<ol style="list-style-type: lower-alpha">
+<li>Enhanced Black Blood</li>
+</ol></li>
+<li>White Honey</li>
+</ol>
+<p>Unordered lists (*, +, -):</p>
+<ul>
+<li>School of the Bear</li>
+<li>School of the Wolf
+<ul>
+<li>School of the Cat</li>
+</ul></li>
+<li>School of the Viper</li>
+</ul>
+<p>Task list</p>
+<p>Task lists can be done in the following syntax:</p>
+<ul>
+<li><p>[ ] an unchecked task list item</p></li>
+<li><p>[x] a checked task list item</p></li>
+</ul>
+<p><br />
+</p>
+</div>
+</div>
+<div id="inserting-figures" class="section level1">
+<h1>Inserting figures</h1>
+<p>put figures you want in an img folder of the project you’re working on.</p>
+<div class="figure">
+<img src="img/Xunan.png" alt="Image caption - Xunantunich" />
+<p class="caption">Image caption - Xunantunich</p>
+</div>
+<p>Next challenge can be found following this link: <a href="#challenge_two">Challenge 2</a><br />
+# Tables Use | and - to create a table as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column 1</th>
+<th>Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Obi-Wan</td>
+<td>Master</td>
+</tr>
+<tr class="even">
+<td>Anakin</td>
+<td>Padawan</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Left align</th>
+<th align="center">Center align</th>
+<th align="right">Right align</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item 1,1</td>
+<td align="center">Item 1,2</td>
+<td align="right">Item 1,3</td>
+</tr>
+<tr class="even">
+<td align="left">Item 2,1</td>
+<td align="center">Item 2,2</td>
+<td align="right">Item 2,3</td>
+</tr>
+</tbody>
+</table>
+<p>For tables with more than two columns, include these : in the way seen above. For big tables, these are not really particularly efficient or useful.</p>
+</div>
+<div id="blocks" class="section level1">
+<h1>Blocks</h1>
+<div id="text-blocks" class="section level2">
+<h2>Text Blocks</h2>
+<blockquote>
+<p>For blocks, use a right-pointing angle bracket</p>
+<p>to make it more than one line, always start with the bracket</p>
+</blockquote>
+</div>
+<div id="code-blocks" class="section level2">
+<h2>Code blocks</h2>
+<p>Use three backticks (```) for enclosing things in a code block</p>
+<pre><code>print(&quot;Hello World!&quot;)
+x = c(1,2,3)
+print(x)</code></pre>
+<p><br />
+</p>
+</div>
+</div>
+<div id="creating-a-table-of-contents" class="section level1">
+<h1>Creating a table of contents</h1>
+<p>Go to the top of the document, as it applies to all the page. Use this code at the top of the page:</p>
+<pre><code>output:
+    html_document:
+        toc: true</code></pre>
+<p>Can change the depth of the heading with</p>
+<pre><code>toc_depth: 4</code></pre>
+<p>This code above displays the table of contents at the top of the page, to get it as a sidebar that moves as you scroll:</p>
+<pre><code>toc_float: true</code></pre>
+<p>So the total code is:</p>
+<pre><code>output:
+    html_document:
+        toc: true
+        toc_depth: 4
+        toc_float: true</code></pre>
+<p>Be precise with the spacing in this. ALSO be aware with the floating sidebar of a contents table, it is very sensitive to the hashes on the headings, so make sure that all the headings you want are visible.<br />
+</p>
+</div>
+<div id="references-examples" class="section level1">
+<h1>References examples</h1>
+<p>Put references into a text file in the same sort of format as visible in the one on here. Upload the references to the R session.<br />
+Go into the yaml section and add under the date:</p>
+<pre><code>bibliography: references.bib
+link-citation: yes</code></pre>
+<p>Citation to a paper <span class="citation">Cardona et al. (2019)</span> and <span class="citation">Cardona (2014)</span><br />
+Then put the references at the bottom of the doc with the # key.</p>
+<p><br />
+<br />
+</p>
+</div>
+<div id="challenges-1-2" class="section level1">
+<h1>Challenges 1 + 2</h1>
+<div id="scientists-lift-the-lid-on-reproducibility" class="section level2">
+<h2>1,500 scientists lift the lid on reproducibility</h2>
+<div id="monya-baker" class="section level5">
+<h5>Monya Baker</h5>
+</div>
+<div id="may-2016" class="section level5">
+<h5>25 May 2016</h5>
+</div>
+</div>
+<div id="survey-sheds-light-on-crisis-rocking-research" class="section level2">
+<h2>Survey sheds light on ‘crisis’ rocking research</h2>
+<p><strong>More than 70% of researchers have tried and failed to reproduce other scientist’s experiments</strong>, and more than half have failed to reproduce their own experiments. Those are some of the telling figures that emerged from <em>Nature</em>’s survey of 1,576 researchers who took a brief online questionnaire on reproducibility in research.</p>
+<p>The data reveal sometimes-contradictory attitudes towards reproducibility. Although 52% of those surveyed agree that there is a significant ‘crisis’ of reproducibility, less than 31% think that failure to reproduce published results means that the result is probably wrong, and most say that they still trust the published literature.</p>
+<p>(to do this in a new website, put the first three headings under ‘challenge’ in the title, author and date sections respectively at the top of the page.)<br />
+</p>
+<div id="challenge_two" class="section level4">
+<h4>Challenge 2</h4>
+<p><img src="img/repro.png" /></p>
+</div>
+<div id="the-survey" class="section level3">
+<h3>The Survey</h3>
+<p>In the survey<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> respondents were asked to rate 11 different approaches to improving reproducibilty in science. Below is the list order by the most highly rated:</p>
+<ul>
+<li>Better understanding of statistics</li>
+<li>Better mentoring/supervision</li>
+<li>More robust design</li>
+<li>Better teaching</li>
+<li>More within-lab validation</li>
+<li>Incentives for better practice</li>
+<li>Incentives for formal reproduction</li>
+<li>More external-lab validation</li>
+<li>More time for mentoring</li>
+<li>Journals enforcing standards</li>
+<li>More time checking notebooks</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-cardona2019">
+<p>Cardona, Alexia, Felix R. Day, John R.B. Perry, Marie Loh, Audrey Y. Chu, Benjamin Lehne, Dirk S. Paul, et al. 2019. “Epigenome-Wide Association Study of Incident Type 2 Diabetes in a British Population: EPIC-Norfolk Study.” <em>Diabetes</em>. American Diabetes Association. <a href="https://doi.org/10.2337/db18-0290">https://doi.org/10.2337/db18-0290</a>.</p>
+</div>
+<div id="ref-cardona2014">
+<p>Cardona, Luca AND Antao, Alexia AND Pagani. 2014. “Genome-Wide Analysis of Cold Adaptation in Indigenous Siberian Populations.” <em>PLOS ONE</em> 9 (5). Public Library of Science: 1–11. <a href="https://doi.org/10.1371/journal.pone.0098076">https://doi.org/10.1371/journal.pone.0098076</a>.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>this is the first footnote<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>this is the second<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>The survey can be downloaded <a href="https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970">here</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
